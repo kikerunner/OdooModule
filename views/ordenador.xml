@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+    <!-- Tree View of Customer-->
+    <record id="ordenador_tree_view" model="ir.ui.view">
+        <field name="name">ordenador.tree.view</field>
+        <field name="model">ordenador</field>
+        <field name="arch" type="xml">
+            <tree string="Informacion de los PCs">
+                <field name="marca"/>
+                <field name="version"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View Of Customer  -->
+    <record id="ordenador_form_view" model="ir.ui.view">
+        <field name="name">ordenador.form.view</field>
+        <field name="model">ordenador</field>
+        <field name="arch" type="xml">
+            <form>
+             <group>
+                <field name="marca" string="Marca" placeholder="Ex name : Turki" style=" max-width: 1150px;  width: 500px"/>
+                <field name="version" string="Version"  placeholder="Ex lastName:Makki" style=" max-width: 1150px;  width: 500px" />
+             </group>
+            </form>
+        </field>
+    </record>
+
+    <!--   Define custom action -->
+
+    <record id="custom_action" model="ir.actions.act_window">
+        <field name="name">Child Menu</field>
+        <field name="res_model">ordenador</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click here to create new item !
+            </p>
+        </field>
+    </record>
+    <!--   Create Top Menu  -->
+    <menuitem name="Ordenador" id="custom_top_menu" action="custom_action" sequence="6"/>
+
+</odoo>
